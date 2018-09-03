@@ -2,7 +2,7 @@
 
 ########################################
 ### This will cover:                ####
-### All genes			            ####
+### All genes                       ####
 ### getFuncVar, shared, biallelic   ####
 ### routine cleanup                 ####
 ### output an xls to for quick ref  ####
