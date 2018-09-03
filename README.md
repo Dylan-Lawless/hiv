@@ -17,3 +17,9 @@ This is demonstrated in the second script; sc_filter.sh.
 
 More sophisticated options are possbible when we have enough controls or non-case samples from the same sequencing runs and library preps.
 This will be shown in the next commit.
+
+The R script (gene_of_interest_allele_freq.R) contains code used to make several figures. 
+These show the frequencies at which variants were found in the candidate gene. They also demonstrate the rate of variants gene-wide using the GnomAD database. 
+Lastly, the variants of interest, and most likely to be importnat for us but combining all of the datasets and showing the key samples, possible index swapping, and population frequency.
+
+In one or two places, the variant IDs are replaced with place holders (variant1,2,3 etc.) and will not work on the original source data, until the column headers are swapped to match.
