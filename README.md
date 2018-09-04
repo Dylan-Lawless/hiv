@@ -7,6 +7,7 @@ The first exmple is a two-step method:
 2. sc_filter.sh
 
 The input is a vcf of 16 samples that are genotyped.
+For an example of how to get to this point, see "automatic_exomes.sh".
 
 First, sc_genotype.sh shows a basic genotype method, similar to what was done by someone else for the input file. 
 It then carries on demonstrating how basic filtering is done. 
