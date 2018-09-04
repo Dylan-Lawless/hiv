@@ -22,7 +22,7 @@
 ########################################
 # java -Xmx12g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
 # -T GenotypeGVCFs \
-# -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+# -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
 # -D ~/ref/b37/dbSnp146.b37.vcf.gz -stand_call_conf 30 \
 # -stand_emit_conf 10 \
 # -V ~/gvcf/sample...sort.dedup.indelrealn.recal.HC.g.vcf \
@@ -49,7 +49,7 @@
 # first, SNPs selected
     java -Xmx12g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
     -T SelectVariants \
-    -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+    -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
     -selectType SNP \
     --variant ~/hiv/hiv_sc/SC.cases.vcf \
     -o ~/hiv/hiv_sc/filter/SCcases.genotype.raw-snps.vcf && \
@@ -57,7 +57,7 @@
 # then, INDELs selected
     java -Xmx12g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
     -T SelectVariants \
-    -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+    -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
     --variant ~/hiv/hiv_sc/SC.cases.vcf \
     -selectType INDEL -selectType MNP \
     -o ~/hiv/hiv_sc/filter/SCcases.genotype.raw-indels.vcf && \
@@ -65,7 +65,7 @@
 # filter both
     java -Xmx8g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
     -T VariantFiltration \
-    -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+    -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
     -V ~/hiv/hiv_sc/filter/SCcases.genotype.raw-snps.vcf \
     --filterExpression "QD < 2.0 || FS > 60.0 || MQ < 40.0 || MappingQualityRankSum < -12.5 || ReadPosRankSum < -8.0" \
     --filterName "snp_hard_filter" \
@@ -73,7 +73,7 @@
     
     java -Xmx8g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
     -T VariantFiltration \
-    -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+    -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
     -V ~/hiv/hiv_sc/filter/SCcases.genotype.raw-indels.vcf \
     --filterExpression "QD < 2.0 || FS > 200.0 || ReadPosRankSum < -20.0" \
     --filterName "indel_hard_filter" \
@@ -81,7 +81,7 @@
 
 # combine the outputs
     java -Xmx8g -jar ~/GATK/GenomeAnalysisTK-3.5-0/GenomeAnalysisTK.jar \
-    -T CombineVariants -R database/human_g1k_v37/human_g1k_v37_decoy.fa \
+    -T CombineVariants -R /database/human_g1k_v37/human_g1k_v37_decoy.fa \
     --variant ~/hiv/hiv_sc/filter/SCcases.genotype.raw-snps.filtered.snvs.vcf \
     --variant ~/hiv/hiv_sc/filter/SCcases.genotype.raw-indels.filtered.indels.vcf \
     -o ~/hiv/hiv_sc/filter/SCcases.genotype.fltd-combinedvars.vcf \
